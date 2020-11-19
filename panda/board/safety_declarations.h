@@ -104,6 +104,13 @@ bool cruise_engaged_prev = false;
 float vehicle_speed = 0;
 bool vehicle_moving = false;
 
+//jshuler
+uint32_t gm_rc_lkas = 5;
+bool gm_relay_open = false;
+bool gm_relay_desired_open = true;
+bool gm_ffc_detected = false; //only true when we have seen the ffc on camera bus
+int gm_camera_bus = -1;
+
 // for safety modes with torque steering control
 int desired_torque_last = 0;       // last desired steer torque
 int rt_torque_last = 0;            // last desired torque for real time check
