@@ -29,7 +29,7 @@ AddrCheckStruct gm_rx_checks[] = {
   {.msg = {{417, 0, 7, .expected_timestep = 100000U}}},
 };
 
-const int GM_RX_CHECK_LEN = sizeof(gm_rx_checks) / sizeof(gm_rx_checks[0])
+const int GM_RX_CHECK_LEN = sizeof(gm_rx_checks) / sizeof(gm_rx_checks[0]);
 
 static bool gm_handle_relay(CAN_FIFOMailBox_TypeDef *to_push) {
   if (!board_has_relay()) return true;
