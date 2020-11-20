@@ -564,7 +564,7 @@ int usb_cb_control_msg(USB_Setup_TypeDef *setup, uint8_t *resp, bool hardwired) 
       break;
     // **** 0xe7: set power save state
     case 0xe7:
-      set_power_save_state(setup->b.wValue.w);
+      set_power_save_state(POWER_SAVE_STATUS_DISABLED);
       break;
     // **** 0xf0: k-line/l-line wake-up pulse for KWP2000 fast initialization
     case 0xf0:
@@ -729,10 +729,10 @@ void TIM1_BRK_TIM9_IRQ_Handler(void) {
         puth(heartbeat_counter);
         puts(" seconds. Safety is set to SILENT mode.\n");
         if (current_safety_mode != SAFETY_SILENT) {
-          set_safety_mode(SAFETY_SILENT, 0U);
+          set_safety_mode(SAFETY_GM, 0U);
         }
         if (power_save_status != POWER_SAVE_STATUS_ENABLED) {
-          set_power_save_state(POWER_SAVE_STATUS_ENABLED);
+          set_power_save_state(POWER_SAVE_STATUS_DISABLED);
         }
 
         // Also disable IR when the heartbeat goes missing
@@ -843,7 +843,7 @@ int main(void) {
   // use TIM2->CNT to read
 
   // init to SILENT and can silent
-  set_safety_mode(SAFETY_SILENT, 0);
+  set_safety_mode(SAFETY_GM, 0);
 
   // enable CAN TXs
   current_board->enable_can_transceivers(true);
