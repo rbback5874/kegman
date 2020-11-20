@@ -29,6 +29,8 @@ AddrCheckStruct gm_rx_checks[] = {
   {.msg = {{417, 0, 7, .expected_timestep = 100000U}}},
 };
 
+const int GM_RX_CHECK_LEN = sizeof(gm_rx_checks) / sizeof(gm_rx_checks[0])
+
 static bool gm_handle_relay(CAN_FIFOMailBox_TypeDef *to_push) {
   if (!board_has_relay()) return true;
   if (gm_relay_open == gm_relay_desired_open) return true;
@@ -46,8 +48,6 @@ static bool gm_handle_relay(CAN_FIFOMailBox_TypeDef *to_push) {
   //TODO: Open -> Closed
   return true;
 }
-
-const int GM_RX_CHECK_LEN = sizeof(gm_rx_checks) / sizeof(gm_rx_checks[0]);
 
 static int gm_rx_hook(CAN_FIFOMailBox_TypeDef *to_push) {
   if (!gm_handle_relay(to_push)) return 0;
