@@ -72,7 +72,7 @@ class CarController():
       idx = (frame // P.STEER_STEP) % 4
 
       can_sends.append(gmcan.create_steering_control(self.packer_pt, CanBus.POWERTRAIN, apply_steer, idx, lkas_enabled))
-      can_sends.append(gmcan.create_aeb_command(self.packer_pt, CanBus.POWERTRAIN, 0, idx, False))
+      #can_sends.append(gmcan.create_aeb_command(self.packer_pt, CanBus.POWERTRAIN, 0, idx, False))
 
     # GAS/BRAKE
     # no output if not enabled, but keep sending keepalive messages
